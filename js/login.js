@@ -90,5 +90,5 @@ formulario.addEventListener("submit", (evento) => {
   mostrarMensaje("Ingreso correcto. Rol: " + usuario.rol + ".", true);
 
   // Cuando exista el menú principal, descomenta esta línea:
-  // window.location.href = "menu.html";
+   window.location.href = "menu.html";
 });
