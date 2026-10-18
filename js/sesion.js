@@ -33,3 +33,29 @@ function mostrarBarra(usuario) {
     window.location.href = "../index.html";
   });
 }
+
+// Celda de tabla con texto seguro
+function crearCelda(texto, clase) {
+  const td = document.createElement("td");
+  td.textContent = texto;
+  if (clase) td.className = clase;
+  return td;
+}
+
+// Llena una lista de definición <dl> con pares [título, valor]
+function llenarDetalle(dl, pares) {
+  dl.replaceChildren();
+  pares.forEach(par => {
+    const dt = document.createElement("dt");
+    dt.textContent = par[0];
+    const dd = document.createElement("dd");
+    dd.textContent = par[1];
+    dl.append(dt, dd);
+  });
+}
+
+// Muestra un mensaje de error (rojo) o de éxito (verde)
+function mostrarTexto(elemento, texto, esExito) {
+  elemento.textContent = texto;
+  elemento.classList.toggle("ok", Boolean(esExito));
+}

@@ -1,36 +1,38 @@
 // ---------------------------------------------------------------
 // Opciones del menú según el rol.
-// Cuando una pantalla ya exista, cambia  disponible: false  a  true
-// y revisa que "pagina" apunte al archivo correcto.
+// Si una pantalla todavía no existe, pon  disponible: false  y
+// aparecerá como "Disponible próximamente".
 // ---------------------------------------------------------------
 const OPCIONES_POR_ROL = {
   "Oficial de Crédito": [
     { titulo: "Clientes", texto: "Registrar y consultar clientes.", pagina: "paginas/clientes.html", disponible: true },
     { titulo: "Solicitudes", texto: "Registrar solicitudes de crédito y darles seguimiento.", pagina: "paginas/solicitudes.html", disponible: true },
-    { titulo: "Garantías", texto: "Registrar las garantías de una solicitud o un crédito.", pagina: "paginas/garantias.html", disponible: false },
-    { titulo: "Desembolsos", texto: "Solicitar el desembolso de créditos aprobados.", pagina: "paginas/desembolsos.html", disponible: false }
+    { titulo: "Garantías", texto: "Registrar las garantías de una solicitud o un crédito.", pagina: "paginas/garantias.html", disponible: true },
+    { titulo: "Desembolsos", texto: "Solicitar el desembolso de créditos aprobados.", pagina: "paginas/desembolsos.html", disponible: true }
   ],
   "Analista de Crédito": [
-    { titulo: "Evaluación de solicitudes", texto: "Consultar historial, calcular la capacidad de pago y evaluar el riesgo.", pagina: "paginas/evaluacion.html", disponible: false }
+    { titulo: "Evaluación de solicitudes", texto: "Consultar historial, calcular la capacidad de pago y evaluar el riesgo.", pagina: "paginas/evaluacion.html", disponible: true }
   ],
   "Jefe de Créditos": [
-    { titulo: "Aprobar o rechazar créditos", texto: "Revisar las solicitudes evaluadas y decidir.", pagina: "paginas/aprobacion.html", disponible: false }
+    { titulo: "Aprobar o rechazar créditos", texto: "Revisar las solicitudes evaluadas y decidir.", pagina: "paginas/aprobacion.html", disponible: true }
   ],
   "Cajero": [
-    { titulo: "Registrar pagos", texto: "Cobrar cuotas y emitir el comprobante.", pagina: "paginas/pagos.html", disponible: false }
+    { titulo: "Registrar pagos", texto: "Cobrar cuotas y emitir el comprobante.", pagina: "paginas/pagos.html", disponible: true }
   ],
   "Gerente": [
-    { titulo: "Reportes", texto: "Cartera, créditos, pagos y mora.", pagina: "paginas/reportes.html", disponible: false }
+    { titulo: "Reportes", texto: "Cartera, créditos, pagos y mora.", pagina: "paginas/reportes.html", disponible: true }
   ],
   "Administrador": [
-    { titulo: "Usuarios", texto: "Crear usuarios, asignar roles y activar o desactivar accesos.", pagina: "paginas/usuarios.html", disponible: false }
+    { titulo: "Usuarios", texto: "Crear usuarios, asignar roles y activar o desactivar accesos.", pagina: "paginas/usuarios.html", disponible: true }
   ]
 };
 
-// Si nadie inició sesión, se vuelve al login
+(function () {
+// Si nadie inició sesión, se vuelve al login y se detiene el script
 const datos = sessionStorage.getItem("usuario");
 if (!datos) {
-  window.location.href = "index.html";
+  window.location.replace("index.html");
+  return;
 }
 
 const usuario = JSON.parse(datos);
@@ -84,3 +86,4 @@ document.getElementById("cerrar-sesion").addEventListener("click", () => {
   sessionStorage.removeItem("usuario");
   window.location.href = "index.html";
 });
+})();
