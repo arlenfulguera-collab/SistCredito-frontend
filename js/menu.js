@@ -5,7 +5,7 @@
 // ---------------------------------------------------------------
 const OPCIONES_POR_ROL = {
   "Oficial de Crédito": [
-    { titulo: "Clientes", texto: "Registrar y consultar clientes.", pagina: "paginas/clientes.html", disponible: false },
+    { titulo: "Clientes", texto: "Registrar y consultar clientes.", pagina: "paginas/clientes.html", disponible: true },
     { titulo: "Solicitudes", texto: "Registrar solicitudes de crédito y darles seguimiento.", pagina: "paginas/solicitudes.html", disponible: false },
     { titulo: "Garantías", texto: "Registrar las garantías de una solicitud o un crédito.", pagina: "paginas/garantias.html", disponible: false },
     { titulo: "Desembolsos", texto: "Solicitar el desembolso de créditos aprobados.", pagina: "paginas/desembolsos.html", disponible: false }
